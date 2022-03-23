@@ -1,0 +1,144 @@
+main {
+  max-width: 100%;
+  min-height: 100vh;
+  background-image: url("/images/pattern-bg.svg"),
+    url("/images/pattern-quotes.svg"), url("/images/pattern-curve.svg");
+  background-repeat: no-repeat;
+  background-size: 88%, 16%, 100%;
+  background-position: center 5vw, center 95vw, center bottom;
+  padding: 50px 30px;
+  display: flex;
+  justify-content: center;
+  @include tbl {
+    background-size: 420px, 70px, 480px;
+    background-position: center 24px, center 456px, bottom left;
+  }
+
+  @include sml {
+    background-size: 48.5%, 8.4%, 44%;
+    background-position: 46.5vw 3vw, 18vw 15vw, bottom left;
+    padding: 7vw 11.5vw;
+  }
+  .slider {
+    overflow: hidden;
+    .button {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 80px;
+      height: 43px;
+      background-color: white;
+      z-index: 100;
+      padding: 15px;
+      border-radius: 30px;
+      top: 0;
+      left: 0;
+      transform: translate(38vw, 74vw);
+      box-shadow: -10px 1px 100px $DarkBlue;
+      @include tbl {
+        transform: translate(210%, 730%);
+      }
+      
+      @include sml {
+        transform: translate(55vw, 42.5vw);
+      }
+      > img {
+        width: 9px;
+        cursor: pointer;
+        @include sml {
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+    .slide-container {
+      position: relative;
+      display: flex;
+      &.left{
+        animation: moveToLeft .3s ease-in-out forwards;
+      }
+      &.right{
+        animation: moveToRight .3s ease-in-out forwards;
+      }
+      .slide {
+        position: relative;
+        text-align: center;
+        min-width: 100%;
+        @include sml {
+          display: flex;
+          flex-direction: row-reverse;
+          text-align: left;
+        }
+        > img {
+          width: 80%;
+          border-radius: 5px;
+          margin-bottom: 80px;
+          @include sml {
+            width: 37vw;
+            height: 37vw;
+          }
+        }
+        .description {
+          position: absolute;
+          left: 0;
+          @include sml {
+            margin-top: 12.5vw;
+            width: 58%;
+          }
+
+          > p {
+            font-size: 18px;
+            font-weight: 300;
+            color: $DarkBlue;
+            margin-bottom: 18px;
+            @include sml {
+              font-size: 2.23vw;
+              line-height: 1.4;
+              margin-bottom: 30px;
+            }
+          }
+
+          .title {
+            @include sml {
+              display: flex;
+            }
+            h1 {
+              font-size: 16px;
+              color: $DarkBlue;
+              @include sml {
+                font-size: 20px;
+              }
+            }
+            p {
+              font-size: 15px;
+              color: $GrayishBlue;
+              @include sml {
+                font-size: 20px;
+                margin-left: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes moveToLeft {
+  0%{
+    right: 0;
+  }
+  100%{
+    right: 100%;
+  }
+}
+
+@keyframes moveToRight {
+  0%{
+    right: 100%;
+  }
+  100%{
+    right: 0%;
+  }
+}
